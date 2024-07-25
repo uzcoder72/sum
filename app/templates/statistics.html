@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statistics</title>
+</head>
+<body>
+    <h1>Statistics</h1>
+    <p>KLAB Count: {{ klab_count }}</p>
+    <p>Total Price of Products: {{ product_sum }}</p>
+    <p>Sum Price: {{ sum_price }}</p>
+
+    <h2>Orders from the Last Day</h2>
+    <p>Total Quantity: {{ orders_last_day_stats.total_quantity }}</p>
+    <p>Total Price: {{ orders_last_day_stats.total_price }}</p>
+    <ul>
+    {% for order in orders_last_day %}
+        <li>{{ order.product.name }} - {{ order.quantity }} - {{ order.product.price }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Orders from the Last 10 Days</h2>
+    <p>Total Quantity: {{ orders_last_10_days_stats.total_quantity }}</p>
+    <p>Total Price: {{ orders_last_10_days_stats.total_price }}</p>
+    <ul>
+    {% for order in orders_last_10_days %}
+        <li>{{ order.product.name }} - {{ order.quantity }} - {{ order.product.price }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
