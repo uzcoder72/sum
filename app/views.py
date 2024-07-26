@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.utils import timezone
 from django.db.models import Sum, Count
 from datetime import timedelta
-from .models import Product, Order
+from app.models import Product, Order
 
 def statistics_view(request):
-    klab_count = Product.objects.aggregate(KLAB_count=Count('KLAB'))['KLAB_count']
+    quantity_count = Product.objects.aggregate(quantity_count=Count('quantity'))['quantity_count']
 
     product_sum = Product.objects.aggregate(total_price=Sum('price'))['total_price']
 
@@ -28,7 +28,7 @@ def statistics_view(request):
     )
 
     context = {
-        'klab_count': klab_count,
+        'quantity_count': quantity_count,
         'product_sum': product_sum,
         'sum_price': sum_price,
         'orders_last_day': orders_last_day,
